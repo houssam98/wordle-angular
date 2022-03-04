@@ -39,12 +39,12 @@ export class GameService {
     console.log('Game starting, the word is ' + this.word);
   }
 
-   /**
+  /**
    * Reset the game by clearing the guesses array.
    */
-    resetGame() {
-      this.guesses = [];
-    }
+  resetGame() {
+    this.guesses = [];
+  }
 
   /**
    * Checks whether the given list is in the word list.
@@ -77,7 +77,11 @@ export class GameService {
       this.guesses.length >= MAX_NUMBER_OF_GUESSES;
 
     if (condition) {
-      this.stats[this.guesses.length - 1] += 1;
+      if (this.isWinner()) {
+        this.stats[this.guesses.length - 1] += 1;
+      } else {
+        this.stats[this.guesses.length] += 1;
+      }
       localStorage.setItem('stats', JSON.stringify(this.stats));
     }
 
@@ -123,7 +127,6 @@ export class GameService {
   charResult(char: string): GuessResult {
     let result = GuessResult.NOT_TRIED;
 
-    console.log(this.guesses);
     for (let guess of this.guesses) {
       let guessResult = this.calculateMatches(guess);
 
