@@ -1,0 +1,16 @@
+<p>{{ result }}</p>
+
+<button class="btn btn-primary w-100" [routerLink]="['/game']">
+  Start new game!
+</button>
+
+<table>
+  <tr>
+    <th>Tries</th>
+    <th>Games</th>
+  </tr>
+  <tr *ngFor="let stat of stats; let i = index">
+    <th>{{ i | triesNumber }}</th>
+    <th>{{ stat }}</th>
+  </tr>
+</table>

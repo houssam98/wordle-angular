@@ -1,0 +1,9 @@
+<h4>Letters</h4>
+<button
+  class="keyboard-letter"
+  type="button"
+  *ngFor="let key of alphabet"
+  [ngStyle]="{ 'background-color': charResult(key) | matchColor }"
+>
+  {{ key }}
+</button>

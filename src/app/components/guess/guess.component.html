@@ -1,0 +1,7 @@
+<div class="guess-row">
+  <app-letter
+    *ngFor="let index of [0, 1, 2, 3, 4]"
+    [letter]="guess.word[index] || ''"
+    [result]="guess.matches[index]"
+  ></app-letter>
+</div>
