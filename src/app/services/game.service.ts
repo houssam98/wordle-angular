@@ -11,7 +11,7 @@ export class GameService {
   private word: string = '';
   private wordList: Array<string> = [];
   private guesses: Array<string> = [];
-  
+
   stats: Array<number> = [0, 0, 0, 0, 0, 0, 0];
 
   constructor(private http: HttpClient) {
@@ -38,6 +38,13 @@ export class GameService {
     this.word = this.wordList[Math.round(Math.random() * this.wordList.length)];
     console.log('Game starting, the word is ' + this.word);
   }
+
+   /**
+   * Reset the game by clearing the guesses array.
+   */
+    resetGame() {
+      this.guesses = [];
+    }
 
   /**
    * Checks whether the given list is in the word list.
@@ -116,6 +123,7 @@ export class GameService {
   charResult(char: string): GuessResult {
     let result = GuessResult.NOT_TRIED;
 
+    console.log(this.guesses);
     for (let guess of this.guesses) {
       let guessResult = this.calculateMatches(guess);
 

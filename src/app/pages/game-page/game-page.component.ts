@@ -14,6 +14,7 @@ export class GamePageComponent implements OnInit {
   constructor(private gameService: GameService, private router: Router) {}
 
   ngOnInit(): void {
+    this.gameService.resetGame();
     // Fill the guesses array with empty guesses
     for (let i = 0; i < MAX_NUMBER_OF_GUESSES; i++) {
       this.guesses.push({
